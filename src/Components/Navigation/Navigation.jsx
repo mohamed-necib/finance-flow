@@ -2,21 +2,26 @@ import React from "react";
 import styled from "styled-components";
 import avatar from "../../img/avatar.png";
 import { menuItems } from "../../utils/menuItems";
+import { deconnect } from "../../utils/icons";
 
-function Navigation() {
+function Navigation({ active, setActive }) {
   return (
     <NavigationStyled>
       <div className="user-container">
         <img src={avatar} alt="" />
         <div className="text">
           <h2>Thomas</h2>
-          <p>Ton Argent</p>
+          <p>Ton budget</p>
         </div>
       </div>
       <ul className="menu-items">
         {menuItems.map((item) => {
           return (
-            <li key={item.id}>
+            <li
+              key={item.id}
+              onClick={() => setActive(item.id)}
+              className={active === item.id ? "active" : ""}
+            >
               {item.icon}
               <span>{item.title}</span>
             </li>
@@ -24,7 +29,7 @@ function Navigation() {
         })}
       </ul>
       <div className="bottom-nav">
-        <li> Déconnexion</li>
+        <li>{deconnect} Déconnexion</li>
       </div>
     </NavigationStyled>
   );
@@ -38,11 +43,13 @@ const NavigationStyled = styled.nav`
   border: 3px solid #ffffff;
   backdrop-filter: blur(4.5px);
   border-radius: 32px;
-  z-index: 100;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   gap: 2rem;
+  li {
+    color: rgba(123, 74, 213, 0.4);
+  }
   .user-container {
     height: 100px;
     display: flex;
@@ -60,10 +67,47 @@ const NavigationStyled = styled.nav`
       box-shadow: 0px 1px 17px rgba(0, 0, 0, 0.06);
     }
     h2 {
-      color: rgba(34, 34, 96, 1);
+      color: var(--primary);
     }
     p {
-      color: rgba(34, 34, 96, .6);
+      color: rgba(72, 29, 150, 0.5);
+    }
+  }
+  .menu-items {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    li {
+      display: grid;
+      grid-template-columns: 40px auto;
+      align-items: center;
+      margin: 0.6rem 0;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.4s ease-in-out;
+      color: rgba(72, 29, 150, 0.5);
+      padding-left: 1rem;
+      position: relative;
+      i {
+        color: rgba(72, 29, 150, 0.5);
+        font-size: 1.4rem;
+        transition: all 0.4s ease-in-out;
+      }
+    }
+  }
+  .active {
+    color: var(--primary) !important;
+    i {
+      color: var(--primary) !important;
+    }
+    &::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      width: 4px;
+      height: 100%;
+      background: var(--primary);
+      border-radius: 0 20px 20px 0;
     }
   }
 `;

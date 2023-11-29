@@ -10,7 +10,9 @@ function MeshBall() {
             transform: translate(0, 0);
       }
       50%{
-            transform: translate(${width/1.2}px, ${height/2}px) rotate(360deg)
+            transform: translate(${width / 1.2}px, ${
+    height / 2
+  }px) rotate(360deg)
       }
       100%{
             transform: translate(0, 0);
@@ -25,7 +27,7 @@ function MeshBall() {
     margin-left: -37vh;
     margin-top: -37vh;
     background: linear-gradient(180deg, #fad96b 0%, #ad86f3 100%);
-    filter: blur(80px);
+    filter: blur(40px);
     animation: ${MoveMeshBall} 15s alternate linear infinite;
   `;
 

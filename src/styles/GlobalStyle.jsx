@@ -2,6 +2,7 @@ import { createGlobalStyle } from "styled-components";
 
 export const GlobalStyle = createGlobalStyle`
 
+
   * {
       box-sizing: border-box;
       margin: 0;
@@ -11,7 +12,8 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   :root {
-      --primary: #252568;
+      --primary: #6D4AAB; 
+      --primary-disabled: #AB97CF;
       --primary2: 'color: hsla(240, 47.51773049645389%, 27.647058823529413%, 0.8)';
       --primary3: 'color: hsla(240, 47.51773049645389%, 27.647058823529413%, 0.6)';
       --green: #00b894;
