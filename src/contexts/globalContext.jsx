@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useState } from "react";
-
+import axios from 'axios';
 const BASE_URL = "http://localhost/finance-flow/backend/";
 
 const GlobalContext = createContext();
@@ -11,7 +11,7 @@ export const GlobalProvider = ({ children }) => {
   const [error, setError] = useState(null);
 
   const addIncome = async (income) => {
-    const response = await axios.post(`$BASE_URL/data.php?add-transaction`, income)
+    const response = await axios.post(`$BASE_URL/data.php?add-income`, income)
     .catch((err) => {
       setError(err.response.data.message);
     })

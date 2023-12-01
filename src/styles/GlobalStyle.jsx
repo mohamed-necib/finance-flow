@@ -26,6 +26,6 @@ export const GlobalStyle = createGlobalStyle`
       font-family: 'League Spartan', sans-serif;
       font-size: clamp(1rem, 1.5vw, 1.2rem);
       overflow: hidden;
-      color: rgba(34,34,96,.6);
+      color: rgba(109, 74, 171, 0.6);
       }
   `;

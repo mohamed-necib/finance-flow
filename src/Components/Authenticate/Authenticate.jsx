@@ -53,11 +53,11 @@ function Authenticate() {
   //Login ..
   const handleLog = async (event) => {
     event.preventDefault();
-    console.log("testLog");
+    
 
     const email = event.target.email.value;
     const password = event.target.password.value;
-    console.log(email, password);
+    
 
     //form
     const formD = new FormData();

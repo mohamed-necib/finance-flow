@@ -38,6 +38,7 @@ if (isset($_GET['get-transactions'])) {
     echo json_encode($transactions);
 }
 
+
 if (isset($_GET['add-transaction'])) {
     if (!isset($_POST['type']) || !isset($_POST['frequency']) || !isset($_POST['title']) || !isset($_POST['date']) || !isset($_POST['description']) || !isset($_POST['id_category']) || !isset($_POST['amount'])) {
         echo json_encode(['message' => 'Missing data.', 'success' => false]);
