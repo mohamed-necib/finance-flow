@@ -16,10 +16,11 @@ export const GlobalStyle = createGlobalStyle`
       --primary-disabled: #AB97CF;
       --primary2: 'color: hsla(240, 47.51773049645389%, 27.647058823529413%, 0.8)';
       --primary3: 'color: hsla(240, 47.51773049645389%, 27.647058823529413%, 0.6)';
-      --green: #00b894;
+      --green: #16AB86;
       --grey: #b2bec3;
-      --accent: #ff7675;
-      --delete: #d63031;
+      --accent: #F38695;
+      --cta: #FBD96B;
+      --delete: #AB273E;
   }
 
   body {

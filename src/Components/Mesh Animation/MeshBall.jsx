@@ -10,9 +10,7 @@ function MeshBall() {
             transform: translate(0, 0);
       }
       50%{
-            transform: translate(${width / 1.2}px, ${
-    height / 2
-  }px) rotate(360deg)
+            transform: translate(${width / 1.2}px, ${height / 2}px) rotate(360deg)
       }
       100%{
             transform: translate(0, 0);

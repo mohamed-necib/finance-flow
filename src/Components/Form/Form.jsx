@@ -3,6 +3,8 @@ import styled from "styled-components";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { useGlobalContext } from "../../contexts/globalContext";
+import Button from "../Button/Button";
+import { plusIcon } from "../../utils/icons";
 
 function Form() {
   const { addIncome } = useGlobalContext();
@@ -13,9 +15,10 @@ function Form() {
     category: "",
     description: "",
     type: "",
+    frequency: "",
   });
 
-  const { title, amount, date, category, description, type } = inputState;
+  const { title, amount, date, category, description } = inputState;
 
   const handleInput = (name) => (e) => {
     setInputState({ ...inputState, [name]: e.target.value });
@@ -53,7 +56,7 @@ function Form() {
           onChange={(date) => {
             setInputState({ ...inputState, date: date });
           }}
-        />
+        /> 
       </div>
       <div className="selects input-control">
         <select
@@ -83,7 +86,18 @@ function Form() {
         ></textarea>
       </div>
       <div className="submit-btn">
-        <button>Ajouter un Revenu</button>
+        <Button 
+          name={'Ajouter un Revenu'}
+          icon={plusIcon}
+          bPad={'.8rem 1.5rem'}
+          bRad={'30px'}
+          bg={'var(--accent)'}
+          color={'#fff'}
+          
+
+
+
+        />
       </div>
     </FormStyled>
   );
@@ -107,35 +121,34 @@ const FormStyled = styled.form`
     resize: none;
     box-shadow: 0 1px 15px rgba(0, 0, 0, 0.06);
     color: rgba(109, 74, 171, 0.9);
-    &::placeholder{
+    &::placeholder {
       color: rgba(109, 74, 171, 0.4);
     }
   }
-  .input-control{
-    input{
+  .input-control {
+    input {
       width: 100%;
     }
     .selects {
       display: flex;
       justify-content: flex-end;
-      select{
+      select {
         color: rgba(109, 74, 171, 0.4);
-        &:focus, &:active{
+        &:focus,
+        &:active {
           color: rgba(109, 74, 171, 1);
         }
       }
     }
   }
 
-    .submit-btn {
-      button{
-        box-shadow: 0px 1px 15px rgba(0, 0, 0, 0.06);
-        &:hover{
-          background: var(--green) !important;
+  .submit-btn {
+    button {
+      box-shadow: 0px 1px 15px rgba(0, 0, 0, 0.06);
+      &:hover {
+        background: var(--green) !important;
       }
     }
-    
-
   }
 `;
 

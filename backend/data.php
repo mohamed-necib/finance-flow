@@ -40,20 +40,22 @@ if (isset($_GET['get-transactions'])) {
 
 
 if (isset($_GET['add-transaction'])) {
-    if (!isset($_POST['type']) || !isset($_POST['frequency']) || !isset($_POST['title']) || !isset($_POST['date']) || !isset($_POST['description']) || !isset($_POST['id_category']) || !isset($_POST['amount'])) {
+
+    
+    if (!isset($_POST['type']) || !isset($_POST['frequency']) || !isset($_POST['title']) || !isset($_POST['date']) || !isset($_POST['description']) || !isset($_POST['category']) || !isset($_POST['amount'])) {
         echo json_encode(['message' => 'Missing data.', 'success' => false]);
         die();
     }
     $stmt = $db->prepare(
-        'INSERT INTO transaction (type, frequency, title, date, description, id_category, id_user, amount)
-        VALUES (:type, :frequency, :title, :date, :description, :id_category, :id_user, :amount)');
+        'INSERT INTO transaction (type, frequency, title, date, description, category, id_user, amount)
+        VALUES (:type, :frequency, :title, :date, :description, :category, :id_user, :amount)');
     $stmt->execute([
         'type' => $_POST['type'],
         'frequency' => $_POST['frequency'],
         'title' => $_POST['title'],
         'date' => $_POST['date'],
         'description' => $_POST['description'],
-        'id_category' => $_POST['id_category'],
+        'category' => $_POST['category'],
         'id_user' => $decodedToken->id,
         'amount' => $_POST['amount']
     ]);
@@ -71,12 +73,12 @@ if (isset($_GET['del-transaction']) && isset($_GET['id'])) {
 }
 
 if (isset($_GET['modif-transaction']) && isset($_GET['id'])) {
-    if (!isset($_POST['type']) || !isset($_POST['frequency']) || !isset($_POST['title']) || !isset($_POST['date']) || !isset($_POST['description']) || !isset($_POST['id_category']) || !isset($_POST['amount'])) {
+    if (!isset($_POST['type']) || !isset($_POST['frequency']) || !isset($_POST['title']) || !isset($_POST['date']) || !isset($_POST['description']) || !isset($_POST['category']) || !isset($_POST['amount'])) {
         echo json_encode(['message' => 'Missing data.', 'success' => false]);
         die();
     }
     $stmt = $db->prepare(
-        'UPDATE transaction SET type = :type, frequency = :frequency, title = :title, date = :date, description = :description, id_category = :id_category, amount = :amount
+        'UPDATE transaction SET type = :type, frequency = :frequency, title = :title, date = :date, description = :description, category = :category, amount = :amount
         WHERE id = :id AND id_user = :user_id');
     $stmt->execute([
         'type' => $_POST['type'],
@@ -84,7 +86,7 @@ if (isset($_GET['modif-transaction']) && isset($_GET['id'])) {
         'title' => $_POST['title'],
         'date' => $_POST['date'],
         'description' => $_POST['description'],
-        'id_category' => $_POST['id_category'],
+        'category' => $_POST['category'],
         'amount' => $_POST['amount'],
         'id' => $_GET['id'],
         'user_id' => $decodedToken->id

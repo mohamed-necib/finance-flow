@@ -15,7 +15,6 @@ function Incomes() {
           <Form />
         </div>
         <div className="incomes">
-            
         </div>
       </div>
       
